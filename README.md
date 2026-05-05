@@ -1,45 +1,52 @@
-# LLMfinal
+# R2-Guard Reproduction
 
-Code and reproduction artifacts for the Intro to LLM final report on R2-Guard.
+This repository contains my reproducibility work for the paper **R2-Guard: Robust Reasoning Enabled LLM Guardrail**.
 
-This repository is based on the official R2-Guard code release and adds a controlled reproducibility workflow, environment files, execution scripts, cached scores, and result reports.
+The original code release is from:
 
-Start here:
-
-- `REPRODUCIBILITY.md`: detailed setup, execution status, blockers, and exact reproduction notes.
-- `REPRODUCTION.md`: shorter reproduction summary.
-- `results/advisor_reproduction_status.md`: report-ready progress summary.
-- `results/table2_local_full_deviation.md`: local full-result comparison.
-- `results/table2_official_style_balanced_n64_deviation.md`: official-style balanced n64 subset result.
-
-Original R2-Guard notes:
-
-### Evaluations on standard safety benchmark
-
-```bash
-bash scripts.sh
+```text
+https://github.com/kangmintong/R-2-Guard
 ```
 
-### Evaluations against jailbreaks
+I kept the original project structure and added only the files needed to set up the environment, run the main reproduced experiments, and inspect the results.
 
-For GCG attack:
+## What is included
 
-```bash
-bash scripts.sh
+- `REPRODUCIBILITY.md`: setup instructions, commands used, and notes about what was/was not reproduced.
+- `repro_table2.sh`: local Table 2 style runs.
+- `repro_weights.sh`: weight-learning experiments.
+- `run_openai_mod_balanced_n64.sh`: small OpenAI Moderation subset run used when full API scoring was rate-limited.
+- `results/`: final CSV/Markdown result summaries kept for the report.
+
+## Main result files
+
+```text
+results/table2_local_full.csv
+results/table2_local_full_deviation.md
+results/table2_llamaguard_8bit_full.csv
+results/table2_llamaguard_8bit_full_deviation.md
+results/table2_official_style_balanced_n64.csv
+results/table2_official_style_balanced_n64_deviation.md
 ```
 
-In `scripts.sh`, specify the corresponding adversarial string:
+## Quick start
 
-- `adv_string_1`: GCG-U1
-- `adv_string_2`: GCG-U2
-- `adv_string_3`: GCG-V
-- `adv_string_4`: GCG-L
-- `adv_string_5`: GCG-R
-
-For AutoDAN, TAP, and PAIR attacks:
+Create a `.env` file if you want to run gated/API models:
 
 ```bash
-bash jailbreak.sh
+cp .env.template .env
 ```
 
-Note: the original released scripts are extensive command banks and require selecting/commenting the experiment to run.
+For local Docker runs on my RTX 5070 setup:
+
+```bash
+docker build -f Dockerfile.local5070 -t r2guard-local5070 .
+```
+
+Then run the local reproduction commands:
+
+```bash
+bash repro_table2.sh
+```
+
+The exact full paper reproduction requires external services and stronger hardware than my local machine. Details are in `REPRODUCIBILITY.md`.

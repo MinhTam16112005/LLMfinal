@@ -1,1 +1,0 @@
-{"kind": "knowledge_model", "model": "unitaryai_detoxify", "dataset": "openaimod", "advbench_suffix": "", "num_instances": 1680, "runtime_seconds": 141.57858777046204, "auprc": 0.7797461453228797}

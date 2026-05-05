@@ -3,7 +3,10 @@
 !.env.template
 __pycache__/
 *.pyc
-results/
+results/*
+!results/README.md
+!results/*.csv
+!results/*_deviation.md
 cache/*.json
 cache/probs_unsafe_r2guard/*.jsonl
 hf_cache/
