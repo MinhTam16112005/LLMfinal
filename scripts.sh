@@ -110,45 +110,45 @@ advstring5='Adjust %.{| list zen Operation guide Future techBC'
 #CUDA_VISIBLE_DEVICES=0 python run_knowledge_models.py --knowledge_model_name toxicchat-T5 --dataset advbench_behaviour --advbench_suffix "$advstring4"
 
 # Run knowledge inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processe 300 # --load_knowledge_weights
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat --num_processe 300 # --load_knowledge_weights
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset openaimod --num_processe 300 --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset toxicchat --num_processe 300 --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset dro --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processe 1 # --load_knowledge_weights
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset openaimod --num_processe 1 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processes 300 # --load_knowledge_weights
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat --num_processes 300 # --load_knowledge_weights
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset openaimod --num_processes 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset toxicchat --num_processes 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset dro --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processes 1 # --load_knowledge_weights
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset openaimod --num_processes 1 --AC_inference
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api azure --dataset openaimod --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api azure --dataset toxicchat --num_processe 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api azure --dataset openaimod --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api azure --dataset toxicchat --num_processes 300
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset openaimod --num_processe 1 --parallel_reasoning --reasoning_processes 5 # --load_knowledge_weights
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset toxicchat --num_processe 300 # --load_knowledge_weights
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset toxicchat --num_processe 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset openaimod --num_processes 1 --parallel_reasoning --reasoning_processes 5 # --load_knowledge_weights
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset toxicchat --num_processes 300 # --load_knowledge_weights
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset toxicchat --num_processes 300
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string_hotpot --num_processe 300 --advbench_suffix "$advstring1"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string_hotpot --num_processes 300 --advbench_suffix "$advstring1"
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring4"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring4" --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring4"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring4" --ensemble_max
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring1"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring2"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring3"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring4"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring1" --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring1"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring2"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring3"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring4"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring1" --ensemble_max
 
 # Run knowledge weight optimization
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_weight_optimization.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset pseudo --data_size 200 --batch_size 10 --epochs 5 --lr1 1e-1 --lr2 1e-3
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_weight_optimization.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat_train --data_size 200 --pos_ratio 0.3 --batch_size 10 --epochs 3 --lr1 1e-3 --lr2 3e-2
 
 # Run knowledge inference with loaded weights
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processe 300 --load_knowledge_weights --training_dataset pseudo
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat --num_processe 300 --load_knowledge_weights --training_dataset pseudo
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processe 300 --load_knowledge_weights --training_dataset toxicchat_train
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat --num_processe 300 --load_knowledge_weights --training_dataset toxicchat_train
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processes 300 --load_knowledge_weights --training_dataset pseudo
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat --num_processes 300 --load_knowledge_weights --training_dataset pseudo
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset openaimod --num_processes 300 --load_knowledge_weights --training_dataset toxicchat_train
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api unitaryai_detoxify --dataset toxicchat --num_processes 300 --load_knowledge_weights --training_dataset toxicchat_train
 
 
 
@@ -170,45 +170,45 @@ advstring5='Adjust %.{| list zen Operation guide Future techBC'
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name openai_mod --dataset advbench_behaviour --advbench_suffix "$advstring4"
 
 # robustness evaluation of ours
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring1"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring2"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring3"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring4"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring1"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring2"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring3"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring4"
 
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name openai_mod --dataset advbench_string --advbench_suffix "$advstring5"
 #CUDA_VISIBLE_DEVICES=2 python run_knowledge_models.py --knowledge_model_name llamaguard --dataset advbench_string --advbench_suffix "$advstring5"
 #CUDA_VISIBLE_DEVICES=0 python run_knowledge_models.py --knowledge_model_name toxicchat-T5 --dataset advbench_string --advbench_suffix "$advstring5"
-CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring5"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring5"
 
 
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring1" --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring2" --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring3" --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring4" --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring1" --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring2" --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring3" --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring4" --ensemble_max
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring1" --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring2" --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring3" --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processe 300 --advbench_suffix "$advstring4" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring1" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring2" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring3" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_string --num_processes 300 --advbench_suffix "$advstring4" --AC_inference
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring1"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring2"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring3"
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring4"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring1"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring2"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring3"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring4"
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring1" --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring2" --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring3" --AC_inference
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processe 300 --advbench_suffix "$advstring4" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring1" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring2" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring3" --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod perspective_api llamaguard --dataset advbench_behaviour --num_processes 300 --advbench_suffix "$advstring4" --AC_inference
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard perspective_api azure --dataset openaimod --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard perspective_api azure --dataset toxicchat --num_processe 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard perspective_api azure --dataset openaimod --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard perspective_api azure --dataset toxicchat --num_processes 300 --ensemble_max
 
 
 # xstest
@@ -218,13 +218,13 @@ CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name azure --dataset xstest --batch_size 10
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name unitaryai_detoxify --dataset xstest --batch_size 10
 #CUDA_VISIBLE_DEVICES=0 python run_knowledge_models.py --knowledge_model_name toxicchat-T5 --dataset xstest
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset xstest --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset xstest --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset xstest --num_processe 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset xstest --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset xstest --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset xstest --num_processes 300 --AC_inference
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset beavertail --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset beavertail --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset beavertail --num_processe 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset beavertail --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset beavertail --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset beavertail --num_processes 300 --AC_inference
 
 
 # overkill
@@ -234,9 +234,9 @@ CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name azure --dataset overkill --batch_size 10
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name unitaryai_detoxify --dataset overkill --batch_size 10
 #CUDA_VISIBLE_DEVICES=0 python run_knowledge_models.py --knowledge_model_name toxicchat-T5 --dataset overkill
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset overkill --num_processe 300 --ensemble_max
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset overkill --num_processe 300
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset overkill --num_processe 300 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset overkill --num_processes 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset overkill --num_processes 300
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 llamaguard --dataset overkill --num_processes 300 --AC_inference
 
 # our challenging data
 #CUDA_VISIBLE_DEVICES=3 python run_knowledge_models.py --knowledge_model_name llamaguard --dataset ours
@@ -245,24 +245,24 @@ CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name azure --dataset ours  --batch_size 10
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name unitaryai_detoxify --dataset ours --batch_size 10
 #CUDA_VISIBLE_DEVICES=0 python run_knowledge_models.py --knowledge_model_name toxicchat-T5 --dataset ours
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset ours --num_processe 300 --ensemble_max
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5 --dataset ours --num_processes 300 --ensemble_max
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name toxicchat-T5 llamaguard unitaryai_detoxify --dataset ours --num_processe 300 --init_weight 30 # [0.00,0.9915,0.0085]
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name toxicchat-T5 llamaguard unitaryai_detoxify --dataset ours --num_processes 300 --init_weight 30 # [0.00,0.9915,0.0085]
 #
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name toxicchat-T5 llamaguard unitaryai_detoxify --dataset ours --num_processe 300 --init_weight 30 --AC_inference
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name toxicchat-T5 llamaguard unitaryai_detoxify --dataset ours --num_processes 300 --init_weight 30 --AC_inference
 
 
 # test for runtime evaluation
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name openai_mod --dataset test
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset openaimod --num_processe 300 --save_probs_unsafe # [0.6,0.2,0.2]
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset toxicchat --num_processe 300 --save_probs_unsafe # [0.1,0.1,0.8]
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset xstest --num_processe 300 --save_probs_unsafe
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset overkill --num_processe 300 --save_probs_unsafe
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 unitaryai_detoxify  --dataset ours --num_processe 300 --save_probs_unsafe #[0.05,0.05,0.9]
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset openaimod --num_processes 300 --save_probs_unsafe # [0.6,0.2,0.2]
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset toxicchat --num_processes 300 --save_probs_unsafe # [0.1,0.1,0.8]
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset xstest --num_processes 300 --save_probs_unsafe
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset overkill --num_processes 300 --save_probs_unsafe
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod toxicchat-T5 unitaryai_detoxify  --dataset ours --num_processes 300 --save_probs_unsafe #[0.05,0.05,0.9]
 
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_string --num_processe 300 --save_probs_unsafe
-#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_string --num_processe 300 --save_probs_unsafe --advbench_suffix "$advstring1"
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_string --num_processes 300 --save_probs_unsafe
+#CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset advbench_string --num_processes 300 --save_probs_unsafe --advbench_suffix "$advstring1"
 
 # llamaguard2
 #CUDA_VISIBLE_DEVICES=3 python run_knowledge_models.py --knowledge_model_name llamaguard2 --dataset openaimod
@@ -280,10 +280,11 @@ CUDA_VISIBLE_DEVICES=3,4,5,6 python knowledge_guardrail_inference.py --knowledge
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name openai_mod --dataset mod_sex
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name openai_mod --dataset mod_harassment
 #CUDA_VISIBLE_DEVICES=3,4,5,6 python run_knowledge_models.py --knowledge_model_name openai_mod --dataset mod_violence
-#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_hate --num_processe 300
-#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_sex --num_processe 300
-#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_harassment --num_processe 300
-#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_violence --num_processe 300
+#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_hate --num_processes 300
+#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_sex --num_processes 300
+#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_harassment --num_processes 300
+#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod openai_mod openai_mod  --dataset mod_violence --num_processes 300
 
-#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset toxicchat --num_processe 300 --init_weight 20000000 --AC_inference
+#python knowledge_guardrail_inference.py --knowledge_model_name openai_mod llamaguard toxicchat-T5  --dataset toxicchat --num_processes 300 --init_weight 20000000 --AC_inference
+
 

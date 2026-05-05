@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "selected": "default",
+  "label": "RECONSTRUCTED-CURRENT-API",
+  "attempts": [
+    {
+      "candidate": "text-moderation-stable",
+      "status": "failed",
+      "error_type": "InvalidRequestError",
+      "error": "Invalid value for 'model' = text-moderation-stable. Please check the OpenAI documentation and try again."
+    },
+    {
+      "candidate": "omni-moderation-latest",
+      "status": "failed",
+      "error_type": "ValueError",
+      "error": "The parameter model should be chosen from ['text-moderation-stable', 'text-moderation-latest'] and it is default to be None."
+    },
+    {
+      "candidate": "default",
+      "status": "ok",
+      "returned_model": "omni-moderation-latest"
+    }
+  ]
+}

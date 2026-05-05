@@ -1,0 +1,3 @@
+method,paper_average_auprc,reproduced_auprc,delta_auprc,paper_runtime_per_instance,reproduced_runtime_per_instance,delta_runtime_per_instance,status,max_instances,subset_strategy,notes
+MLN reasoning,0.869,0.8207097810485335,-0.04829021895146646,0.1123,0.000504990816116333,-0.11179500918388366,PARTIAL,100,balanced,"Average over local subsets (Overkill,ToxicChat,TwinSafety,XSTest) with two local components, not paper's six-dataset/three-component average"
+PC reasoning,0.869,0.8207097810485335,-0.04829021895146646,0.0062,0.0003128772974014282,-0.005887122702598571,PARTIAL,100,balanced,"Average over local subsets (Overkill,ToxicChat,TwinSafety,XSTest) with two local components, not paper's six-dataset/three-component average"

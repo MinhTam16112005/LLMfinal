@@ -1,0 +1,61 @@
+model,dataset,paper_auprc,reproduced_auprc,delta,status,max_instances,subset_strategy,notes
+Detoxify,OpenAI Mod,0.78,,,BLOCKED,,,Full dataset/cache not produced in this budget-capped run
+Detoxify,ToxicChat,0.386,0.7078231908235595,0.3218231908235595,PARTIAL,100,balanced,ToxicChat subset (balanced); no paid APIs; local/free models only
+Detoxify,XSTest,0.66,0.8683075283273901,0.20830752832739008,PARTIAL,100,balanced,XSTest subset (balanced); no paid APIs; local/free models only
+Detoxify,Overkill,0.462,0.5868963914372108,0.12489639143721082,PARTIAL,100,balanced,Overkill subset (balanced); no paid APIs; local/free models only
+Detoxify,BeaverTails,0.636,,,BLOCKED,,,Full dataset/cache not produced in this budget-capped run
+Detoxify,TwinSafety,0.598,0.4651838259040192,-0.1328161740959808,PARTIAL,100,balanced,TwinSafety subset (balanced); no paid APIs; local/free models only
+Perspective,OpenAI Mod,0.787,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Perspective,ToxicChat,0.499,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Perspective,XSTest,0.671,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Perspective,Overkill,0.543,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Perspective,BeaverTails,0.761,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Perspective,TwinSafety,0.583,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Azure,OpenAI Mod,0.743,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Azure,ToxicChat,0.553,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Azure,XSTest,0.722,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Azure,Overkill,0.7,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Azure,BeaverTails,0.787,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+Azure,TwinSafety,0.653,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+CoT,OpenAI Mod,0.856,,,BLOCKED,,,CoT demos/runner are not released in the repo
+CoT,ToxicChat,0.592,,,BLOCKED,,,CoT demos/runner are not released in the repo
+CoT,XSTest,0.743,,,BLOCKED,,,CoT demos/runner are not released in the repo
+CoT,Overkill,0.793,,,BLOCKED,,,CoT demos/runner are not released in the repo
+CoT,BeaverTails,0.687,,,BLOCKED,,,CoT demos/runner are not released in the repo
+CoT,TwinSafety,0.599,,,BLOCKED,,,CoT demos/runner are not released in the repo
+OpenAI Mod,OpenAI Mod,0.87,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+OpenAI Mod,ToxicChat,0.617,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+OpenAI Mod,XSTest,0.778,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+OpenAI Mod,Overkill,0.796,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+OpenAI Mod,BeaverTails,0.728,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+OpenAI Mod,TwinSafety,0.607,,,BLOCKED,,,Blocked by budget/API policy unless explicitly approved; no full cached scores in repo
+LlamaGuard,OpenAI Mod,0.788,,,BLOCKED,,,Hugging Face gated model access/cache required
+LlamaGuard,ToxicChat,0.698,,,BLOCKED,,,Hugging Face gated model access/cache required
+LlamaGuard,XSTest,0.765,,,BLOCKED,,,Hugging Face gated model access/cache required
+LlamaGuard,Overkill,0.855,,,BLOCKED,,,Hugging Face gated model access/cache required
+LlamaGuard,BeaverTails,0.789,,,BLOCKED,,,Hugging Face gated model access/cache required
+LlamaGuard,TwinSafety,0.737,,,BLOCKED,,,Hugging Face gated model access/cache required
+ToxicChat-T5,OpenAI Mod,0.787,,,BLOCKED,,,Full dataset/cache not produced in this budget-capped run
+ToxicChat-T5,ToxicChat,0.885,0.9558075646110629,0.07080756461106286,PARTIAL,100,balanced,ToxicChat subset (balanced); no paid APIs; local/free models only
+ToxicChat-T5,XSTest,0.819,0.9570993453528914,0.13809934535289148,PARTIAL,100,balanced,XSTest subset (balanced); no paid APIs; local/free models only
+ToxicChat-T5,Overkill,0.801,0.9559099241832335,0.15490992418323346,PARTIAL,100,balanced,Overkill subset (balanced); no paid APIs; local/free models only
+ToxicChat-T5,BeaverTails,0.761,,,BLOCKED,,,Full dataset/cache not produced in this budget-capped run
+ToxicChat-T5,TwinSafety,0.607,0.4771469458100067,-0.12985305418999327,PARTIAL,100,balanced,TwinSafety subset (balanced); no paid APIs; local/free models only
+Ensemble,OpenAI Mod,0.876,,,BLOCKED,,,Requires all selected component score caches for the full dataset
+Ensemble,ToxicChat,0.882,0.9358088484482026,0.05380884844820255,PARTIAL,100,balanced,ToxicChat subset (balanced); no paid APIs; local/free models only
+Ensemble,XSTest,0.81,0.9544918325861529,0.14449183258615284,PARTIAL,100,balanced,XSTest subset (balanced); no paid APIs; local/free models only
+Ensemble,Overkill,0.879,0.9052510788698056,0.0262510788698056,PARTIAL,100,balanced,Overkill subset (balanced); no paid APIs; local/free models only
+Ensemble,BeaverTails,0.797,,,BLOCKED,,,Requires all selected component score caches for the full dataset
+Ensemble,TwinSafety,0.653,0.47198321831131756,-0.18101678168868246,PARTIAL,100,balanced,TwinSafety subset (balanced); no paid APIs; local/free models only
+R2-Guard MLN,OpenAI Mod,0.926,,,BLOCKED,,,Requires all selected component score caches for the full dataset
+R2-Guard MLN,ToxicChat,0.903,0.9393456510831898,0.03634565108318977,PARTIAL,100,balanced,ToxicChat subset (balanced); no paid APIs; local/free models only
+R2-Guard MLN,XSTest,0.878,0.9589510557984737,0.08095105579847373,PARTIAL,100,balanced,XSTest subset (balanced); no paid APIs; local/free models only
+R2-Guard MLN,Overkill,0.921,0.9099971832252072,-0.011002816774792867,PARTIAL,100,balanced,Overkill subset (balanced); no paid APIs; local/free models only
+R2-Guard MLN,BeaverTails,0.83,,,BLOCKED,,,Requires all selected component score caches for the full dataset
+R2-Guard MLN,TwinSafety,0.758,0.4745452340872633,-0.2834547659127367,PARTIAL,100,balanced,TwinSafety subset (balanced); no paid APIs; local/free models only
+R2-Guard PC,OpenAI Mod,0.924,,,BLOCKED,,,Requires all selected component score caches for the full dataset
+R2-Guard PC,ToxicChat,0.909,0.9393456510831898,0.030345651083189762,PARTIAL,100,balanced,ToxicChat subset (balanced); no paid APIs; local/free models only
+R2-Guard PC,XSTest,0.882,0.9589510557984737,0.07695105579847372,PARTIAL,100,balanced,XSTest subset (balanced); no paid APIs; local/free models only
+R2-Guard PC,Overkill,0.919,0.9099971832252072,-0.009002816774792866,PARTIAL,100,balanced,Overkill subset (balanced); no paid APIs; local/free models only
+R2-Guard PC,BeaverTails,0.825,,,BLOCKED,,,Requires all selected component score caches for the full dataset
+R2-Guard PC,TwinSafety,0.757,0.4745452340872633,-0.2824547659127367,PARTIAL,100,balanced,TwinSafety subset (balanced); no paid APIs; local/free models only

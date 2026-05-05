@@ -32,7 +32,7 @@ def knowledge_weight_learning(args):
     for i in range(num_models):
         dim_list.append(len(load_field_name(model_list[i])))
     if pseudo:
-        scores_all, labels = construct_pseudo_training_set(data_size=data_size, dim_list=dim_list)
+        scores_all, labels = construct_pseudo_training_set(data_size=data_size, dim_list=dim_list, model_names=model_list)
     else:
         scores_all, labels = sample_real(data_size=args.data_size, model_names=model_list, dataset=args.dataset, args=args)
     model = knowledge_inference_model(dim_list=dim_list)

@@ -315,71 +315,120 @@ def preprocess_beavertail():
             categories.append(1)
     return instances, categories
 
+def _apply_max_instances(instances, categories, args):
+    max_instances = getattr(args, 'max_instances', None)
+    if max_instances is None or max_instances <= 0:
+        return instances, categories
+    subset_strategy = getattr(args, 'subset_strategy', 'head')
+    if subset_strategy != 'balanced':
+        return instances[:max_instances], categories[:max_instances]
+
+    positive = [idx for idx, category in enumerate(categories) if category == 1]
+    negative = [idx for idx, category in enumerate(categories) if category == 0]
+    pos_target = min(len(positive), max_instances // 2)
+    neg_target = min(len(negative), max_instances - pos_target)
+    selected = positive[:pos_target] + negative[:neg_target]
+    if len(selected) < max_instances:
+        selected_set = set(selected)
+        selected.extend(idx for idx in range(len(instances)) if idx not in selected_set)
+        selected = selected[:max_instances]
+    selected = sorted(selected)
+    return [instances[idx] for idx in selected], [categories[idx] for idx in selected]
+
+
 def load_data(dataset, args):
     if "openai" in dataset:
-        return preprocess_openai()
-    elif "toxicchat" in dataset:
-        return preprocess_toxicchat()
+        instances, categories = preprocess_openai()
+    elif dataset == 'toxicchat_train':
+        size = getattr(args, 'train_data_size', getattr(args, 'data_size', 200))
+        instances, categories = preprocess_toxicchat(train=True, size=size)
+    elif dataset == 'toxicchat':
+        instances, categories = preprocess_toxicchat()
     elif dataset=='advbench_string':
-        return preprocess_advbench_string(file_path = './data/advbench/harmful_strings.csv', adv_suffix=args.advbench_suffix)
+        instances, categories = preprocess_advbench_string(file_path = './data/advbench/harmful_strings.csv', adv_suffix=args.advbench_suffix)
     elif dataset=='advbench_behaviour':
-        return preprocess_advbench_string(file_path = './data/advbench/harmful_behaviors.csv', adv_suffix=args.advbench_suffix)
+        instances, categories = preprocess_advbench_string(file_path = './data/advbench/harmful_behaviors.csv', adv_suffix=args.advbench_suffix)
     elif dataset=='advbench_string_hotpot':
-        return preprocess_advbench_string_hotpot(adv_suffix=args.advbench_suffix)
+        instances, categories = preprocess_advbench_string_hotpot(adv_suffix=args.advbench_suffix)
     elif dataset=='advbench_behaviour_hotpot':
-        return preprocess_advbench_behaviour_hotpot(adv_suffix=args.advbench_suffix)
+        instances, categories = preprocess_advbench_behaviour_hotpot(adv_suffix=args.advbench_suffix)
     elif dataset=='dro':
-        return preprocess_dro()
+        instances, categories = preprocess_dro()
     elif dataset=='xstest':
-        return preprocess_xstest()
+        instances, categories = preprocess_xstest()
     elif dataset=='overkill':
-        return preprocess_overkill()
+        instances, categories = preprocess_overkill()
     elif dataset=='ours':
-        return preprocess_ours()
+        instances, categories = preprocess_ours()
     elif dataset=='test':
-        return preprocess_test()
+        instances, categories = preprocess_test()
     elif dataset=='beavertail':
-        return preprocess_beavertail()
+        instances, categories = preprocess_beavertail()
     elif dataset=='mod_hate':
-        return preprocess_openai_hate()
+        instances, categories = preprocess_openai_hate()
     elif dataset=='mod_sex':
-        return preprocess_openai_sex()
+        instances, categories = preprocess_openai_sex()
     elif dataset=='mod_harassment':
-        return preprocess_openai_harassment()
+        instances, categories = preprocess_openai_harassment()
     elif dataset=='mod_selfharm':
-        return preprocess_openai_selfharm()
+        instances, categories = preprocess_openai_selfharm()
     elif dataset=='mod_violence':
-        return preprocess_openai_violence()
+        instances, categories = preprocess_openai_violence()
     else:
         raise ValueError(f"Dataset {dataset} is not supported!")
+    return _apply_max_instances(instances, categories, args)
 
-def construct_pseudo_training_set(data_size, dim_list):
+def _implication_pairs_for_model(model_name):
+    fields = load_field_name(model_name)
+    field_to_idx = {field: idx for idx, field in enumerate(fields)}
+    known_pairs = [
+        ("harassment/threatening", "harassment"),
+        ("violence/graphic", "violence"),
+        ("hate/threatening", "hate"),
+        ("sexual/minors", "sexual"),
+        ("self-harm/intent", "self-harm"),
+        ("self-harm/instructions", "self-harm"),
+        ("severe_toxicity", "toxicity"),
+        ("SEVERE_TOXICITY", "TOXICITY"),
+    ]
+    return [
+        (field_to_idx[child], field_to_idx[parent])
+        for child, parent in known_pairs
+        if child in field_to_idx and parent in field_to_idx
+    ]
+
+def construct_pseudo_training_set(data_size, dim_list, model_names=None):
     scores_all = []
     labels = []
     num_models = len(dim_list)
+    implication_pairs = [
+        _implication_pairs_for_model(model_name)
+        for model_name in model_names
+    ] if model_names else [[] for _ in range(num_models)]
 
-    for i in range(data_size):
-        if np.random.uniform(0, 1) > 0.5:
-            labels.append(1)
-        else:
-            labels.append(0)
+    while len(scores_all) < data_size:
         scores_one_instance = []
+        violates_implication = False
         for j in range(num_models):
-            cur_scores = []
-            for k in range(dim_list[j]):
-                cur_scores.append(np.random.uniform(0, 0.1))
-            if labels[-1] == 1:
-                cur_scores[random.choice(list(range(dim_list[j])))] = np.random.uniform(0.9, 1)
+            cur_scores = [np.random.uniform(0, 1) for _ in range(dim_list[j])]
+            for child_idx, parent_idx in implication_pairs[j]:
+                if cur_scores[child_idx] > 0.5 and cur_scores[parent_idx] < 0.5:
+                    violates_implication = True
+                    break
             scores_one_instance.append(cur_scores)
+            if violates_implication:
+                break
+        if violates_implication:
+            continue
+        labels.append(int(max(max(scores) for scores in scores_one_instance) > 0.5))
         scores_all.append(scores_one_instance)
     return scores_all, labels
 
 def sample_real(data_size, model_names, dataset, args):
     scores_all = []
+    labels = []
     scores_total = []
     for j in range(len(model_names)):
-        if 'train' in dataset:
-            dataset = dataset.split('_')[0]
         score_path =  f'./cache/{model_names[j]}_{dataset}_scores.json'
         with open(score_path, 'r') as file:
             scores = json.load(file)
@@ -395,5 +444,6 @@ def sample_real(data_size, model_names, dataset, args):
         for j in range(len(model_names)):
             scores_one_instance.append([scores_total[j][fil][i] for fil in load_field_name(model_names[j])])
         scores_all.append(scores_one_instance)
+        labels.append(categories[i])
 
-    return scores_all, categories
+    return scores_all, labels

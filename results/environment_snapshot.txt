@@ -1,0 +1,8 @@
+OS: Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35
+Python: 3.10.12
+Torch: 2.11.0+cu128
+Torch CUDA: 12.8
+CUDA available: True
+GPU: NVIDIA GeForce RTX 5070
+GPU capability: (12, 0)
+Git commit: 8cc3ce3f103892886e5e8261bf41b8929f7021e0

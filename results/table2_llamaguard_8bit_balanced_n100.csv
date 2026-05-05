@@ -1,0 +1,7 @@
+model,dataset,paper_reference_model,paper_auprc,reproduced_auprc,delta,status,num_instances,max_instances,subset_strategy,runtime_seconds,notes
+LlamaGuard-8bit-local-subset,OpenAI Mod,LlamaGuard,0.788,0.8675734871081862,0.07957348710818613,PARTIAL-HARDWARE-ADAPTED-SUBSET,100,100,balanced,95.58631825447083,8-bit local RTX 5070 adaptation; not exact paper-resource LlamaGuard
+LlamaGuard-8bit-local-subset,ToxicChat,LlamaGuard,0.698,0.8703995578344464,0.1723995578344465,PARTIAL-HARDWARE-ADAPTED-SUBSET,100,100,balanced,87.36816453933716,8-bit local RTX 5070 adaptation; not exact paper-resource LlamaGuard
+LlamaGuard-8bit-local-subset,XSTest,LlamaGuard,0.765,0.8924162575272574,0.12741625752725738,PARTIAL-HARDWARE-ADAPTED-SUBSET,100,100,balanced,106.73747777938843,8-bit local RTX 5070 adaptation; not exact paper-resource LlamaGuard
+LlamaGuard-8bit-local-subset,Overkill,LlamaGuard,0.855,0.8532653121839349,-0.001734687816065117,PARTIAL-HARDWARE-ADAPTED-SUBSET,100,100,balanced,98.54758977890015,8-bit local RTX 5070 adaptation; not exact paper-resource LlamaGuard
+LlamaGuard-8bit-local-subset,BeaverTails,LlamaGuard,0.789,0.6324105945750919,-0.15658940542490818,PARTIAL-HARDWARE-ADAPTED-SUBSET,100,100,balanced,88.11813449859619,8-bit local RTX 5070 adaptation; not exact paper-resource LlamaGuard
+LlamaGuard-8bit-local-subset,TwinSafety,LlamaGuard,0.737,0.8482753310196558,0.11127533101965581,PARTIAL-HARDWARE-ADAPTED-SUBSET,100,100,balanced,80.84854888916016,8-bit local RTX 5070 adaptation; not exact paper-resource LlamaGuard

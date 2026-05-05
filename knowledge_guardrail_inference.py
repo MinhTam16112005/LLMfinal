@@ -2,10 +2,12 @@ import argparse
 from tqdm import tqdm
 from sklearn.metrics import precision_recall_curve, auc
 from data_loading import load_data
-from utils import load_scores_given_path, load_field_name, construct_weight_graph, evaluate_asr, save_to_jsonl
+from utils import load_scores_given_path, load_field_name, construct_weight_graph, evaluate_asr, save_to_jsonl, score_cache_path
 from knowledge_guardrail_model import knowledge_inference_model
 import multiprocessing
 import time
+import json
+import os
 
 def knowledge_inference_partition(model, scores_all_one_instance, args):
     if not args.AC_inference:
@@ -35,12 +37,17 @@ def compute_one_instance(process_id, output, idx_list, scores_all_models, model,
     output.put([process_id, probs_unsafe])
 
 def run_knowledge_guardrail(args):
+    if args.num_processes < 1:
+        raise ValueError("--num_processes must be >= 1")
+    if args.reasoning_processes < 1:
+        raise ValueError("--reasoning_processes must be >= 1")
+
     num_models = len(args.knowledge_model_name)
     model_list = args.knowledge_model_name
     scores_all_models = []
     dim_list = []
     for i in range(num_models):
-        score_path = f'./cache/{model_list[i]}_{args.dataset}_scores{args.advbench_suffix}.json'
+        score_path = score_cache_path(model_list[i], args.dataset, args)
         scores_all_models.append(load_scores_given_path(score_path))
         dim_list.append(len(load_field_name(model_list[i])))
 
@@ -51,11 +58,19 @@ def run_knowledge_guardrail(args):
         model.weight_init_1()
     else:
         model = knowledge_inference_model(scores_all_models, dim_list=dim_list)
-        model.weight_init(weight=args.init_weight, agg_weights=[0.05,0.05,0.9]) # 0.65,0.05,0.3 # beavertail: 0.05 0.2 0.75
+        if args.agg_weights:
+            if len(args.agg_weights) != num_models:
+                raise ValueError("--agg_weights length must match --knowledge_model_name length")
+            agg_weights = args.agg_weights
+        elif num_models == 3:
+            agg_weights = [0.05,0.05,0.9] # 0.65,0.05,0.3 # beavertail: 0.05 0.2 0.75
+        else:
+            agg_weights = [1.0 / num_models] * num_models
+        model.weight_init(weight=args.init_weight, agg_weights=agg_weights)
         # model.weight_init_1()
         # model.weight_init_llamaguard_twin()
 
-    num_processes = args.num_processes
+    num_processes = min(args.num_processes, max(1, len(instances)))
     processes = []
     output = multiprocessing.Queue()
 
@@ -92,17 +107,41 @@ def run_knowledge_guardrail(args):
     precision, recall, thresholds = precision_recall_curve(categories, probs_unsafe)
     auprc = auc(recall, precision)
     print(f'AUPRC: {auprc}')
+    result = {
+        "kind": "r2guard_inference",
+        "dataset": args.dataset,
+        "knowledge_model_name": args.knowledge_model_name,
+        "advbench_suffix": args.advbench_suffix,
+        "ac_inference": args.AC_inference,
+        "ensemble_max": args.ensemble_max,
+        "ensemble_avg": args.ensemble_avg,
+        "load_knowledge_weights": args.load_knowledge_weights,
+        "training_dataset": args.training_dataset,
+        "num_instances": len(instances),
+        "max_instances": args.max_instances,
+        "subset_strategy": args.subset_strategy,
+        "num_processes_requested": args.num_processes,
+        "num_processes_used": num_processes,
+        "runtime_seconds": end_time - st_time,
+        "auprc": auprc,
+    }
 
     if 'adv' in args.dataset:
         racc = evaluate_asr(categories, probs_unsafe, thresh=0.5)
         print(f'Robust accuracy: {racc}')
+        result["udr_at_0_5"] = racc
 
     if 'mod_' in args.dataset:
         acc = evaluate_asr(categories, probs_unsafe, thresh=0.5,dataset=args.dataset)
         print(f'False negative rate: {1.-acc}')
+        result["false_negative_rate_at_0_5"] = 1. - acc
 
     if args.save_probs_unsafe:
         save_to_jsonl(instances, probs_unsafe, categories, args)
+    if args.result_jsonl:
+        os.makedirs(os.path.dirname(args.result_jsonl) or ".", exist_ok=True)
+        with open(args.result_jsonl, "a", encoding="utf-8") as f:
+            f.write(json.dumps(result) + "\n")
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description="Arguments for running knowledge guardrail")
@@ -119,6 +158,10 @@ if __name__=='__main__':
     parser.add_argument('--ensemble_max', action='store_true')
     parser.add_argument('--save_probs_unsafe', action='store_true')
     parser.add_argument('--init_weight', type=float, default=66.0)
+    parser.add_argument('--agg_weights', type=float, nargs='+', default=None)
+    parser.add_argument('--max_instances', type=int, default=None)
+    parser.add_argument('--subset_strategy', choices=['head', 'balanced'], default='head')
+    parser.add_argument('--result_jsonl', type=str, default=None)
     args = parser.parse_args()
 
     run_knowledge_guardrail(args)

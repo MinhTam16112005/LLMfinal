@@ -11,7 +11,15 @@ from googleapiclient import discovery
 from auditnlg.safety.exam import safety_scores
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import json
-from llama_recipes.inference.prompt_format_utils import build_prompt, create_conversation, LLAMA_GUARD_CATEGORY
+try:
+    from llama_recipes.inference.prompt_format_utils import build_prompt, create_conversation, LLAMA_GUARD_CATEGORY
+except ImportError:
+    from llama_recipes.inference.prompt_format_utils import build_default_prompt, create_conversation, LlamaGuardVersion
+
+    LLAMA_GUARD_CATEGORY = None
+
+    def build_prompt(agent_type, categories, conversation):
+        return build_default_prompt(agent_type, conversation, LlamaGuardVersion.LLAMA_GUARD_1)
 from enum import Enum
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModelForSeq2SeqLM

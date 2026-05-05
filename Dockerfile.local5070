@@ -1,0 +1,24 @@
+# Local RTX 5070 / Blackwell-compatible variant.
+#
+# The exact paper hardware was RTX A6000. Dockerfile.repro is the closer
+# A6000-style environment. This file is for running/debugging on the local
+# RTX 5070, whose sm_120 kernels require PyTorch CUDA 12.8+ binaries.
+
+FROM r2guard-repro:latest
+
+RUN python3.10 -m pip install --force-reinstall \
+    torch torchvision torchaudio \
+    --index-url https://download.pytorch.org/whl/cu128
+
+RUN python3.10 -m pip install --force-reinstall \
+    numpy==1.26.4 \
+    "fsspec[http]==2024.3.1" \
+    MarkupSafe==2.1.5 \
+    pillow==10.4.0
+
+RUN python3.10 - <<'PY'
+import torch
+print("torch", torch.__version__)
+print("cuda", torch.version.cuda)
+print("arch", torch.cuda.get_arch_list())
+PY

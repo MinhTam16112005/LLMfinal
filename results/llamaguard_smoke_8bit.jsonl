@@ -1,0 +1,1 @@
+{"kind": "knowledge_model", "model": "llamaguard", "dataset": "xstest", "advbench_suffix": "", "num_instances": 2, "max_instances": 2, "subset_strategy": "head", "runtime_seconds": 46.85689568519592, "auprc": 0.5}

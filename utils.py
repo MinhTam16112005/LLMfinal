@@ -15,6 +15,21 @@ def save_scores(scores, score_path):
         json.dump(scores, file, indent=4)
 
 
+def score_cache_suffix(args):
+    max_instances = getattr(args, 'max_instances', None)
+    if max_instances is None or max_instances <= 0:
+        return ''
+    subset_strategy = getattr(args, 'subset_strategy', 'head')
+    if subset_strategy and subset_strategy != 'head':
+        return f'_{subset_strategy}_n{max_instances}'
+    return f'_n{max_instances}'
+
+
+def score_cache_path(model, dataset, args):
+    advbench_suffix = getattr(args, 'advbench_suffix', '')
+    return f'./cache/{model}_{dataset}_scores{score_cache_suffix(args)}{advbench_suffix}.json'
+
+
 def evaluate_auprc(categories, scores, fieldnames):
     probs_unsafe = []
     for idx, gt in enumerate(categories):

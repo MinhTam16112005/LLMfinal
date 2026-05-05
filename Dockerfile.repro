@@ -1,0 +1,36 @@
+FROM nvidia/cuda:12.1.1-cudnn8-runtime-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+ENV PIP_NO_CACHE_DIR=1
+
+WORKDIR /workspace/R-2-Guard
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.10 \
+    python3.10-venv \
+    python3-pip \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python3.10 -m pip install torch==2.2.2 --index-url https://download.pytorch.org/whl/cu121
+
+RUN python3.10 -m pip install --upgrade pip setuptools wheel
+
+COPY requirements-repro.txt constraints-a6000.txt .
+
+RUN python3.10 -m pip install -r requirements-repro.txt -c constraints-a6000.txt --extra-index-url https://download.pytorch.org/whl/cu121
+
+RUN python3.10 - <<'PY'
+import torch
+print("torch", torch.__version__)
+print("cuda", torch.version.cuda)
+assert torch.__version__.startswith("2.2.2"), torch.__version__
+PY
+
+COPY . .
+
+RUN mkdir -p cache/probs_unsafe_r2guard
+
+CMD ["/bin/bash"]
