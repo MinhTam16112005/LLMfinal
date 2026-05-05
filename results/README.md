@@ -10,5 +10,6 @@ Files:
 - `table2_llamaguard_8bit_full_deviation.md`
 - `table2_official_style_balanced_n64.csv`
 - `table2_official_style_balanced_n64_deviation.md`
+- `extension_reasoning_ablation.csv`
 
 Scratch logs, smoke-test outputs, and model score caches were removed from the repository.

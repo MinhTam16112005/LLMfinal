@@ -161,6 +161,27 @@ results/table2_official_style_balanced_n64.csv
 results/table2_official_style_balanced_n64_deviation.md
 ```
 
+### 5. Reasoning-layer extension
+
+This extension compares the R2-Guard reasoning outputs against the Ensemble baseline using the saved result CSVs.
+It does not call paid APIs, load models, or read raw prompts.
+
+```bash
+python analyze_reasoning_extension.py
+```
+
+Important output file:
+
+```text
+results/extension_reasoning_ablation.csv
+```
+
+The analysis reports:
+
+- Ensemble vs. R2-Guard MLN AUPRC;
+- Ensemble vs. released PC-like `--AC_inference` AUPRC;
+- MLN vs. PC-like runtime speedup.
+
 ## Final result files kept in this repo
 
 Only the final report tables are kept:
@@ -172,6 +193,7 @@ results/table2_llamaguard_8bit_full.csv
 results/table2_llamaguard_8bit_full_deviation.md
 results/table2_official_style_balanced_n64.csv
 results/table2_official_style_balanced_n64_deviation.md
+results/extension_reasoning_ablation.csv
 ```
 
 Intermediate cache files and scratch logs were removed to keep the submission clean.
